@@ -415,7 +415,6 @@ func (c *HelmClient) TemplateChart(spec *ChartSpec) ([]byte, error) {
 	mergeInstallOptions(spec, client)
 
 	client.DryRun = true
-	client.ReleaseName = "RELEASE-NAME"
 	client.Replace = true // Skip the name check
 	client.ClientOnly = true
 	client.APIVersions = []string{}
