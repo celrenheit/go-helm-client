@@ -28,8 +28,6 @@ import (
 	"k8s.io/cli-runtime/pkg/genericclioptions"
 )
 
-var storage = repo.File{}
-
 const (
 	defaultCachePath            = "/tmp/.helmcache"
 	defaultRepositoryConfigPath = "/tmp/.helmrepo"
@@ -109,7 +107,7 @@ func newClient(options *Options, clientGetter genericclioptions.RESTClientGetter
 	return &HelmClient{
 		Settings:     settings,
 		Providers:    getter.All(settings),
-		storage:      &storage,
+		storage:      &repo.File{},
 		ActionConfig: actionConfig,
 		linting:      options.Linting,
 		DebugLog:     debugLog,
